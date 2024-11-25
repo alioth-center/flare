@@ -1,0 +1,12 @@
+# JetBrains IDEA Config
+.idea
+
+# Visual Studio Code Config
+.vscode
+
+# MacOS System Files
+.DS_Store
+
+# Generated Code
+proto/**/*.pb.go
+app/model/*.gen.go

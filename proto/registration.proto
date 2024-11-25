@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package flare.proto.v1;
+option go_package = "./pb";
+
+import "metadata.proto";
+
+message ClientRegistrationRequest {
+  ClientRegistrationMetadata client_metadata = 1;
+  ClientAuthorizationMetadata authorize_metadata = 2;
+}
+
+message ClientRegistrationResponse {
+  ClientMetadata client_metadata = 1;
+  ClientSecretMetadata client_secret = 2;
+}
+
+message UserRegistrationRequest {
+  FlareAuthorizationMetadata authorization = 1;
+  UserRegistrationMetadata user_metadata = 2;
+}
+
+message UserRegistrationResponse {
+  UserMetadata user_metadata = 1;
+}
+
+service RegistrationService {
+  rpc ClientRegistration (ClientRegistrationRequest) returns (ClientRegistrationResponse);
+  rpc UserRegistration (UserRegistrationRequest) returns (UserRegistrationResponse);
+}

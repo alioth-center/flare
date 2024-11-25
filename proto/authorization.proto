@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package flare.proto.v1;
+option go_package = "./pb";
+
+import "metadata.proto";
+
+message UserEmailAuthorizationRequest {
+  string user_id = 1;
+  string user_email = 2;
+  string authorize_code = 3;
+}
+
+message UserEmailAuthorizationResponse {
+  UserMetadata user_metadata = 1;
+}
+
+message UserPasswordAuthorizationRequest {
+  string user_index_field = 1;
+  string encrypted_password = 2;
+}
+
+message UserPasswordAuthorizationResponse {
+  UserMetadata user_metadata = 1;
+}
+
+message UserTokenAuthorizationRequest {
+  string token = 1;
+}
+
+message UserTokenAuthorizationResponse {
+  UserMetadata user_metadata = 1;
+}
+
+message UserSessionAuthorizationRequest {
+  string user_id = 1;
+  string user_session_token = 2;
+}
+
+message UserSessionAuthorizationResponse {
+  UserMetadata user_metadata = 1;
+}
+
+message ClientTokenAuthorizationRequest {
+  string token = 1;
+}
+
+message ClientTokenAuthorizationResponse {
+  ClientMetadata client_metadata = 1;
+}
+
+service AuthorizationService {
+  rpc UserEmailAuthorization (UserEmailAuthorizationRequest) returns (UserEmailAuthorizationResponse);
+  rpc UserPasswordAuthorization (UserPasswordAuthorizationRequest) returns (UserPasswordAuthorizationResponse);
+  rpc UserTokenAuthorization (UserTokenAuthorizationRequest) returns (UserTokenAuthorizationResponse);
+  rpc UserSessionAuthorization (UserSessionAuthorizationRequest) returns (UserSessionAuthorizationResponse);
+  rpc ClientTokenAuthorization (ClientTokenAuthorizationRequest) returns (ClientTokenAuthorizationResponse);
+}

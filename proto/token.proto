@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package flare.proto.v1;
+option go_package = "./pb";
+
+message ScopeDeclarationRequest {
+}
+
+message ScopeDeclarationResponse {
+}
+
+message ClientTokenCreationRequest {
+}
+
+message ClientTokenCreationResponse {
+}
+
+message UserTokenCreationRequest {
+}
+
+message UserTokenCreationResponse {
+}
+
+message TokenValidationRequest {
+}
+
+message TokenValidationResponse {
+}
+
+message TokenRefreshRequest {
+}
+
+message TokenRefreshResponse {
+}
+
+message CodeTokenExchangeRequest {
+}
+
+message CodeTokenExchangeResponse {
+}
+
+service TokenService {
+  rpc ScopeDeclaration (ScopeDeclarationRequest) returns (ScopeDeclarationResponse);
+  rpc ClientTokenCreation (ClientTokenCreationRequest) returns (ClientTokenCreationResponse);
+  rpc UserTokenCreation (UserTokenCreationRequest) returns (UserTokenCreationResponse);
+  rpc TokenValidation (TokenValidationRequest) returns (TokenValidationResponse);
+  rpc TokenRefresh (TokenRefreshRequest) returns (TokenRefreshResponse);
+  rpc CodeTokenExchange (CodeTokenExchangeRequest) returns (CodeTokenExchangeResponse);
+}
